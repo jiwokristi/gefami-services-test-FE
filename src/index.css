@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0 box-border p-0;
+  }
+
+  *:focus {
+    @apply shadow-active-primary outline-none transition-all;
+  }
+
+  html {
+    @apply landscape-tablets:text-[50%] tablets:text-[43.75%] smaller-tablets:text-[37.5%] phones:text-[31.25%] text-[62.5%];
+  }
+
+  body {
+    @apply text-16 font-normal text-black antialiased;
+  }
+
+  main > section {
+    @apply tablets:px-64 mx-auto max-w-[120rem] px-32;
+  }
+}
+
+@layer components {
+  .heading__primary {
+    @apply text-44 tracking-1.25 font-bold;
+  }
+}
