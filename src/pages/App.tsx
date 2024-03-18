@@ -1,6 +1,6 @@
 function App() {
   return (
-    <section id="App">
+    <section id="App" className="py-96">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque dolore
       neque esse fuga expedita facilis qui natus ducimus voluptatem saepe.
       Error, aliquid. Doloremque ex voluptatibus suscipit sequi nam, similique
