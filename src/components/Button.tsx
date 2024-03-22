@@ -1,14 +1,38 @@
-interface ButtonProps extends React.ComponentProps<'button'> {
+import type { VariantProps } from 'class-variance-authority';
+import ReactLoading from 'react-loading';
+
+import { buttonVariants } from '../utils/constants/variants/button';
+
+export interface ButtonProps
+  extends Omit<React.ComponentProps<'button'>, 'color'>,
+    VariantProps<typeof buttonVariants> {
   classes?: string;
+  loading?: boolean;
 }
 
-export const Button = ({ classes = '', children, ...props }: ButtonProps) => {
+export const Button = ({
+  classes = '',
+  variant,
+  size,
+  color,
+  shadowSize,
+  children,
+  disabled = false,
+  loading = false,
+  ...props
+}: ButtonProps) => {
   return (
     <button
-      className={`gradient__blue shadow-glow/30 hover:shadow-glow/40 active:shadow-glow/40 rounded-xl px-32 py-16 text-20 font-semibold tracking-0.25 shadow-xl transition-all duration-300 ease-in ${classes}`}
+      aria-disabled={disabled}
+      disabled={disabled}
+      className={`${buttonVariants({ variant, size, color, shadowSize })} ${classes}`}
       {...props}
     >
-      {children}
+      {loading ? (
+        <ReactLoading type="balls" width={32} height={32} color="#FFF" />
+      ) : (
+        children
+      )}
     </button>
   );
 };

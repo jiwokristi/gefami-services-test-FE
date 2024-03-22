@@ -16,7 +16,7 @@
   }
 
   body {
-    @apply bg-247-gradient phones:bg-initial-state-light bg-cover bg-center text-16 font-medium text-white antialiased phones:bg-none;
+    @apply bg-247-gradient bg-cover bg-center text-16 font-medium text-white antialiased phones:bg-initial-state-light phones:bg-none;
   }
 
   main > section {
@@ -27,6 +27,10 @@
 @layer components {
   .heading__primary {
     @apply text-44 font-bold tracking-1.25;
+  }
+
+  .heading__secondary {
+    @apply text-24 font-bold tracking-0.25;
   }
 
   .gradient__blue {
