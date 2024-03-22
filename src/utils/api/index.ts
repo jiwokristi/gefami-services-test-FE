@@ -17,7 +17,7 @@ const baseQuery = fetchBaseQuery({
 export const api = createApi({
   reducerPath: 'api',
   baseQuery,
-  tagTypes: ['user'],
+  tagTypes: ['user', 'post'],
   // @ts-expect-error we inject endpoints in the relevant api slices (at utils/api).
   endpoints: builder => ({}),
 });

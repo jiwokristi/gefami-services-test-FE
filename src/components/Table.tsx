@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 export type Column<T> = {
   header: string;
   key?: string | number;
@@ -43,8 +45,8 @@ export function Table<T, P>({
       </thead>
       <tbody>
         {data.map((row, rowIndex) => (
-          <>
-            <tr key={rowIndex} className="odd:bg-initial-state-medium">
+          <Fragment key={rowIndex}>
+            <tr className="odd:bg-initial-state-medium">
               {columnArray.map((column, colIndex) => (
                 <td
                   className={`p-16 text-[1.8rem] tracking-0.25 ${column.width}`}
@@ -63,7 +65,7 @@ export function Table<T, P>({
                 </td>
               )}
             </tr>
-          </>
+          </Fragment>
         ))}
       </tbody>
     </table>
