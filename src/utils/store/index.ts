@@ -1,11 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import boxReducer from './boxSlice';
+import { api } from '../api';
+
+import userReducer from './userSlice';
+import postReducer from './postSlice';
 
 const store = configureStore({
   reducer: {
-    box: boxReducer,
+    [api.reducerPath]: api.reducer,
+    user: userReducer,
+    post: postReducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(api.middleware),
 });
 
 export default store;

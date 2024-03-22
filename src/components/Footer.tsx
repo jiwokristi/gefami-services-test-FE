@@ -9,6 +9,13 @@ export const Footer = () => {
   }, []);
 
   if (portalElement) {
-    return ReactDOM.createPortal(<div>Footer</div>, portalElement);
+    return ReactDOM.createPortal(
+      <div className="py-32 tablets:translate-y-full">
+        <h1 className="heading__primary text-center">
+          Frontend Developer Test
+        </h1>
+      </div>,
+      portalElement,
+    );
   }
 };
