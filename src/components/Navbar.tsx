@@ -10,7 +10,7 @@ export const Navbar = () => {
 
   if (portalElement) {
     return ReactDOM.createPortal(
-      <div className="py-32 tablets:translate-y-full">
+      <div className="bg-initial-state py-32 tablets:translate-y-full">
         <h1 className="heading__primary text-center">Jiwo Kristi</h1>
       </div>,
       portalElement,
