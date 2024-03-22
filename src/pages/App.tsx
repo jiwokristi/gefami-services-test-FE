@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -6,6 +6,7 @@ import { Button } from '../components/Button';
 import { Input } from '../components/Input';
 
 import { useAuthenticateMutation } from '../utils/api/auth';
+import { useGetUsersQuery } from '../utils/api/user';
 
 import { User, userSchema } from '../utils/validations/auth';
 
@@ -17,6 +18,8 @@ function App() {
   const { user } = useAppSelector(({ user }) => user);
   const dispatch = useAppDispatch();
 
+  const [currentUser, setCurrentUser] = useState<string>();
+
   const {
     register,
     handleSubmit,
@@ -25,6 +28,8 @@ function App() {
     resolver: zodResolver(userSchema),
     mode: 'onTouched',
   });
+
+  const { data: users } = useGetUsersQuery();
 
   const [authenticate, { isLoading: isFormLoading, data }] =
     useAuthenticateMutation();
@@ -50,8 +55,9 @@ function App() {
 
   return (
     <section id="App" className="py-96">
+      {/* ----- SOAL NO. 9 ----- */}
       <form
-        className="mx-auto flex w-[50rem] flex-col items-center gap-32"
+        className="mx-auto mb-64 flex w-[50rem] flex-col items-center gap-32"
         noValidate
         onSubmit={handleSubmit(submitHandler)}
       >
@@ -102,6 +108,23 @@ function App() {
           </>
         )}
       </form>
+
+      {/* ----- SOAL NO. 2 ----- */}
+      <div className="mx-auto flex w-[50rem] items-center justify-center gap-32">
+        <span>{currentUser || users?.[0]?.username}</span>
+        <Button
+          classes="rounded-xl"
+          onClick={() => {
+            if (users) {
+              setCurrentUser(
+                users[Math.floor(Math.random() * users.length)].username,
+              );
+            }
+          }}
+        >
+          ROLL
+        </Button>
+      </div>
     </section>
   );
 }
