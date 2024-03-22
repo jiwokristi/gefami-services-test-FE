@@ -62,15 +62,37 @@ const config: Config = {
       // ----- COLOR SYSTEM -----
       colors: {
         primary: {
-          DEFAULT: '',
-          tint: {},
-          shade: {},
+          DEFAULT: '#1f4247',
+          tint: {
+            100: '#355559',
+            200: '#4c686c',
+          },
+          shade: {
+            100: '#1c3b40',
+            200: '#193539',
+            300: '#162e32',
+          },
+        },
+        'initial-state': {
+          DEFAULT: '#09141A',
+          light: '#162329',
+          medium: '#0E191F',
+        },
+        gray: {
+          DEFAULT: '#D9D9D9',
         },
       },
 
       // ----- SHADOW SYSTEM -----
       boxShadow: {
-        'active-primary': '0 0 0 0.3rem rgba(0, 0, 0, 0.5)',
+        'active-primary': '0 0 0 0.3rem rgba(76, 104, 108, 0.75)',
+      },
+      boxShadowColor: {
+        glow: 'rgb(98,205,203)',
+      },
+
+      backgroundImage: {
+        '247-gradient': 'url("assets/gradient-bg.svg")',
       },
     },
   },
